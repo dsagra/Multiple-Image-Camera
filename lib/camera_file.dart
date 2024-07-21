@@ -41,9 +41,9 @@ class _CameraFileState extends State<CameraFile> with TickerProviderStateMixin {
     });
   }
 
-  removeImage() {
+  removeImage(int index) {
     setState(() {
-      imageFiles.removeLast();
+      imageFiles.removeAt(index);
     });
   }
 
@@ -114,56 +114,13 @@ class _CameraFileState extends State<CameraFile> with TickerProviderStateMixin {
                   return Row(
                     children: <Widget>[
                       Container(
-                        alignment: Alignment.bottomLeft,
-                        // ignore: unnecessary_null_comparison
-                        child: imageFiles[index] == null
-                            ? const Text("No image captured")
-                            : imageFiles.length - 1 == index
-                                ? ScaleTransition(
-                                    scale: scaleAnimation,
-                                    child: GestureDetector(
-                                      onTap: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder:
-                                                    (BuildContext context) =>
-                                                        ImagePreviewView(
-                                                          File(imageFiles[index]
-                                                              .path),
-                                                          "",
-                                                        )));
-                                      },
-                                      child: Stack(
-                                        children: [
-                                          Image.file(
-                                            File(
-                                              imageFiles[index].path,
-                                            ),
-                                            height: 90,
-                                            width: 60,
-                                          ),
-                                          Positioned(
-                                            top: 0,
-                                            right: 0,
-                                            child: GestureDetector(
-                                              onTap: () {
-                                                setState(() {
-                                                  removeImage();
-                                                });
-                                              },
-                                              child: Image.network(
-                                                "https://logowik.com/content/uploads/images/close1437.jpg",
-                                                height: 30,
-                                                width: 30,
-                                              ),
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  )
-                                : GestureDetector(
+                          alignment: Alignment.bottomLeft,
+                          // ignore: unnecessary_null_comparison
+                          child: imageFiles[index] == null
+                              ? const Text("No image captured")
+                              : ScaleTransition(
+                                  scale: scaleAnimation,
+                                  child: GestureDetector(
                                     onTap: () {
                                       Navigator.push(
                                           context,
@@ -175,15 +132,33 @@ class _CameraFileState extends State<CameraFile> with TickerProviderStateMixin {
                                                     "",
                                                   )));
                                     },
-                                    child: Image.file(
-                                      File(
-                                        imageFiles[index].path,
-                                      ),
-                                      height: 90,
-                                      width: 60,
+                                    child: Stack(
+                                      children: [
+                                        Image.file(
+                                          File(
+                                            imageFiles[index].path,
+                                          ),
+                                          height: 90,
+                                          width: 60,
+                                        ),
+                                        Positioned(
+                                          top: 0,
+                                          right: 0,
+                                          child: IconButton(
+                                            icon: const Icon(
+                                              Icons.close,
+                                              color: Colors.white,
+                                            ),
+                                            onPressed: () {
+                                              removeImage(index);
+                                              setState(() {});
+                                            },
+                                          ),
+                                        )
+                                      ],
                                     ),
                                   ),
-                      )
+                                ))
                     ],
                   );
                 }),
