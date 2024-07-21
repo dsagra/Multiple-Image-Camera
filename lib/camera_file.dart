@@ -1,7 +1,8 @@
 import 'dart:async';
 import 'dart:io';
-import "package:flutter/material.dart";
+
 import "package:camera/camera.dart";
+import "package:flutter/material.dart";
 import 'package:flutter/services.dart';
 import 'package:multiple_image_camera/image_preview.dart';
 
@@ -47,25 +48,25 @@ class _CameraFileState extends State<CameraFile> with TickerProviderStateMixin {
   }
 
   Widget? _animatedButton({Widget? customContent}) {
-    return customContent != null
-        ? customContent
-        : Container(
-            height: 70,
-            width: 150,
-            decoration: BoxDecoration(
-              color: Colors.white38,
-              borderRadius: BorderRadius.circular(100.0),
-            ),
-            child: const Center(
-              child: Text(
-                'Done',
-                style: TextStyle(
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black),
+    return customContent ??
+        Container(
+          height: 70,
+          width: 150,
+          decoration: BoxDecoration(
+            color: Colors.white38,
+            borderRadius: BorderRadius.circular(100.0),
+          ),
+          child: const Center(
+            child: Text(
+              'Done',
+              style: TextStyle(
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold,
+                color: Color(0xffF5B128),
               ),
             ),
-          );
+          ),
+        );
   }
 
   Future<void> _initCamera() async {
@@ -359,7 +360,7 @@ class _CameraFileState extends State<CameraFile> with TickerProviderStateMixin {
         elevation: 0,
         backgroundColor: Colors.transparent,
       ),
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       extendBody: true,
       body: _buildCameraPreview(),
     );
