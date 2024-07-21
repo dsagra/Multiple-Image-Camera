@@ -53,7 +53,7 @@ class _CameraFileState extends State<CameraFile> with TickerProviderStateMixin {
           height: 70,
           width: 150,
           decoration: BoxDecoration(
-            color: Colors.white38,
+            color: const Color(0xffF5B128),
             borderRadius: BorderRadius.circular(100.0),
           ),
           child: const Center(
@@ -62,7 +62,7 @@ class _CameraFileState extends State<CameraFile> with TickerProviderStateMixin {
               style: TextStyle(
                 fontSize: 20.0,
                 fontWeight: FontWeight.bold,
-                color: Color(0xffF5B128),
+                color: Colors.black,
               ),
             ),
           ),
