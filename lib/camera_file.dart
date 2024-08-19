@@ -154,6 +154,27 @@ class _CameraFileState extends State<CameraFile> with TickerProviderStateMixin {
                                               setState(() {});
                                             },
                                           ),
+                                        ),
+                                        Positioned(
+                                          bottom: 0,
+                                          left: 0,
+                                          child: Container(
+                                            decoration: const BoxDecoration(
+                                              color: Colors.white,
+                                              shape: BoxShape.circle,
+                                            ),
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.all(2.0),
+                                              child: Text(
+                                                "${index + 1}",
+                                                style: const TextStyle(
+                                                  color: Colors.black,
+                                                  fontSize: 10,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
                                         )
                                       ],
                                     ),
