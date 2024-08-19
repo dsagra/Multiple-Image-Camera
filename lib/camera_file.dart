@@ -170,7 +170,7 @@ class _CameraFileState extends State<CameraFile> with TickerProviderStateMixin {
                                                 "${index + 1}",
                                                 style: const TextStyle(
                                                   color: Colors.black,
-                                                  fontSize: 10,
+                                                  fontSize: 14,
                                                 ),
                                               ),
                                             ),
