@@ -346,7 +346,8 @@ class _CameraFileState extends State<CameraFile> with TickerProviderStateMixin {
             imageFiles.length > widget.minImages - widget.imageCounter
                 ? "${imageFiles.length} images"
                 : "${imageFiles.length} / ${widget.minImages - widget.imageCounter} images",
-            style: const TextStyle(color: Colors.black, fontSize: 16)),
+            style: const TextStyle(color: Colors.black, fontSize: 16),
+            textAlign: TextAlign.left),
         actions: [
           imageFiles.isNotEmpty
               ? GestureDetector(
@@ -365,7 +366,7 @@ class _CameraFileState extends State<CameraFile> with TickerProviderStateMixin {
               : const SizedBox()
         ],
         elevation: 0,
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.white.withOpacity(0.5),
       ),
       backgroundColor: Theme.of(context).colorScheme.surface,
       extendBody: true,
