@@ -56,8 +56,8 @@ class _CameraFileState extends State<CameraFile> with TickerProviderStateMixin {
   Widget? _animatedButton({Widget? customContent}) {
     return customContent ??
         Container(
-          height: 70,
-          width: 150,
+          height: 50,
+          width: 120,
           decoration: BoxDecoration(
             color: const Color(0xffF5B128),
             borderRadius: BorderRadius.circular(100.0),
@@ -342,12 +342,17 @@ class _CameraFileState extends State<CameraFile> with TickerProviderStateMixin {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        title: Text(
-            imageFiles.length > widget.minImages - widget.imageCounter
-                ? "${imageFiles.length} images"
-                : "${imageFiles.length} / ${widget.minImages - widget.imageCounter} images",
-            style: const TextStyle(color: Colors.black, fontSize: 16),
-            textAlign: TextAlign.left),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Text(
+                imageFiles.length > widget.minImages - widget.imageCounter
+                    ? "${imageFiles.length} images"
+                    : "${imageFiles.length} / ${widget.minImages - widget.imageCounter} images",
+                style: const TextStyle(color: Colors.black, fontSize: 16),
+                textAlign: TextAlign.left),
+          ],
+        ),
         actions: [
           imageFiles.isNotEmpty
               ? GestureDetector(
