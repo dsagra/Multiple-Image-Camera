@@ -8,7 +8,13 @@ import 'package:multiple_image_camera/image_preview.dart';
 
 class CameraFile extends StatefulWidget {
   final Widget? customButton;
-  const CameraFile({super.key, this.customButton});
+  final int minImages;
+  final int imageCounter;
+  const CameraFile(
+      {super.key,
+      this.customButton,
+      required this.minImages,
+      this.imageCounter = 0});
 
   @override
   State<CameraFile> createState() => _CameraFileState();
@@ -336,6 +342,11 @@ class _CameraFileState extends State<CameraFile> with TickerProviderStateMixin {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
+        title: Text(
+            imageFiles.length > widget.minImages - widget.imageCounter
+                ? "${imageFiles.length} images"
+                : "${imageFiles.length} / ${widget.minImages - widget.imageCounter} images",
+            style: const TextStyle(color: Colors.black, fontSize: 16)),
         actions: [
           imageFiles.isNotEmpty
               ? GestureDetector(
